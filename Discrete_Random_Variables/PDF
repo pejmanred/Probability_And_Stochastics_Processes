@@ -1,0 +1,28 @@
+function pmf=finitepmf(sx,px,x)
+% finite random variable X:
+% vector sx of sample space
+% elements {sx(1),sx(2), ...}
+% vector px of probabilities 
+% px(i)=P[X=sx(i)]
+% Output is the vector 
+% pmf: pmf(i)=P[X=x(i)]
+pmf=zeros(size(x(:)));
+for i=1:length(x)
+    pmf(i)= sum(px(find(sx==x(i))));
+end
+
+
+function y = fax3pmf(x)
+% input x=[2 2.5 6]
+s=(1:8)';
+p=[0.15* ones(4,1); 0.1 * ones(4,1)];
+y = finitepmf(s,p,x);
+
+>> fax3pmf([2 2.5 6])
+
+ans =
+
+    0.1500
+         0
+    0.1000
+
